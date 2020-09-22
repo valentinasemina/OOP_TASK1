@@ -17,11 +17,9 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        static Rational ReadX(TextBox tb1, TextBox tb2)
+        static Rational ReadRational(TextBox tb1, TextBox tb2)
         {
             int up = 1, down = 1;
-            //up = Convert.ToInt32(tb1.Text);
-            //down = Convert.ToInt32(tb2.Text);
             try
             {
                 up = Convert.ToInt32(tb1.Text);
@@ -29,7 +27,6 @@ namespace WindowsFormsApp1
             }
             catch (Exception e)
             {
-
                 MessageBox.Show("Введи число");
                 return new Rational(0,0);
             }
@@ -37,37 +34,15 @@ namespace WindowsFormsApp1
             return x;
         }
 
-        static Rational ReadY(TextBox tb1, TextBox tb2)
-        {
-            int up=1, down=1;
-            up = Convert.ToInt32(tb1.Text);
-            down = Convert.ToInt32(tb2.Text);
-            try
-            {
-                up = Convert.ToInt32(tb1.Text);
-                down = Convert.ToInt32(tb2.Text);
-            }
-            catch (Exception e)
-            {
-
-                MessageBox.Show("Введи число");
-                return new Rational(0, 0);
-            }
-           
-            Rational y = new Rational(up, down);
-            return y;
-        }
-
         private void btplus_Click(object sender, EventArgs e)
-        {
-            
-            Rational z = ReadX(textBox1,textBox2)+(ReadY(textBox3,textBox4));
+        {           
+            Rational z = ReadRational(textBox1,textBox2)+(ReadRational(textBox3,textBox4));
             textBox5.Text = z.Tostring(z);
         }
 
         private void btminus_Click(object sender, EventArgs e)
         {
-            Rational z = ReadX(textBox1, textBox2)-(ReadY(textBox3, textBox4));
+            Rational z = ReadRational(textBox1, textBox2)-(ReadRational(textBox3, textBox4));
             textBox5.Text = z.Tostring(z);
         }
 
@@ -82,19 +57,14 @@ namespace WindowsFormsApp1
 
         private void btumn_Click(object sender, EventArgs e)
         {
-            Rational z = ReadX(textBox1, textBox2)*(ReadY(textBox3, textBox4));
+            Rational z = ReadRational(textBox1, textBox2)*(ReadRational(textBox3, textBox4));
             textBox5.Text = z.Tostring(z);
         }
 
         private void btdel_Click(object sender, EventArgs e)
         {
-            Rational z = ReadX(textBox1, textBox2)/(ReadY(textBox3, textBox4));
+            Rational z = ReadRational(textBox1, textBox2)/(ReadRational(textBox3, textBox4));
             textBox5.Text = z.Tostring(z);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

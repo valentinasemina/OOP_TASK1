@@ -16,10 +16,10 @@ namespace WindowsFormsApp1
             this.denumarator = denumarator;
             this.numerator = numerator;
         }
-        public Rational Cut(Rational result)
+        public Rational Cut(Rational number)
         {
-            int res = result.numerator;
-            int resznam = result.denumarator;
+            int res = number.numerator;
+            int resznam = number.denumarator;
 
             while (res != resznam)
             {
@@ -36,8 +36,8 @@ namespace WindowsFormsApp1
             int nod = resznam;
             if (nod == 0)
                 nod = 1;
-            Rational result2 = new Rational(result.numerator / nod, result.denumarator / nod);
-            return result2;
+            Rational result = new Rational(number.numerator / nod, number.denumarator / nod);
+            return result;
         }
 
         public static Rational operator +(Rational x, Rational y)
@@ -60,18 +60,18 @@ namespace WindowsFormsApp1
             return x.Divis(y);
         }
 
-        public string Tostring(Rational result)
+        public string Tostring(Rational number)
         {
-            string resultre;
+            string result;
             
-            if (result.denumarator!=0 && result.numerator % result.denumarator == 0)
+            if (number.denumarator!=0 && number.numerator % number.denumarator == 0)
             {
-                int re = result.numerator / result.denumarator;
-                resultre = Convert.ToString(re);
+                int re = number.numerator / number.denumarator;
+                result = Convert.ToString(re);
             }
             else
-                resultre = Convert.ToString(result.numerator + "/" + result.denumarator);
-            return resultre;
+                result = Convert.ToString(number.numerator + "/" + number.denumarator);
+            return result;
         }
 
         public Rational Sum(Rational other)
@@ -91,8 +91,7 @@ namespace WindowsFormsApp1
             resznam = this.denumarator * other.denumarator;
             resch = this.numerator * other.denumarator - other.numerator * this.denumarator;
                       Rational result = new Rational(resch, resznam);
-            return Cut(result);
-             
+            return Cut(result);            
         }
 
         public Rational Multip(Rational other)
